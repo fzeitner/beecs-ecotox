@@ -41,7 +41,8 @@ func (s *PopulationStats) Reset() {
 
 // ConsumptionStats contains statistics on daily consumption.
 type ConsumptionStats struct {
-	HoneyDaily float64 // Today's honey consumption [mg].
+	HoneyDaily  float64 // Today's honey consumption [mg].
+	PollenDaily float64 // Today's pollen consumption [g].
 }
 
 // Reset all stats to zero.
