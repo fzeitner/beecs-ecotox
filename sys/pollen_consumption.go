@@ -18,6 +18,7 @@ type PollenConsumption struct {
 	workerDev   *params.WorkerDevelopment
 
 	stores *globals.Stores
+	cons   *globals.ConsumptionStats
 	pop    *globals.PopulationStats
 }
 
@@ -28,6 +29,7 @@ func (s *PollenConsumption) Initialize(w *ecs.World) {
 	s.workerDev = ecs.GetResource[params.WorkerDevelopment](w)
 
 	s.stores = ecs.GetResource[globals.Stores](w)
+	s.cons = ecs.GetResource[globals.ConsumptionStats](w)
 	s.pop = ecs.GetResource[globals.PopulationStats](w)
 }
 
@@ -39,6 +41,7 @@ func (s *PollenConsumption) Update(w *ecs.World) {
 
 	consumption := (needAdult + needLarvae) / 1000.0
 	s.stores.Pollen = math.Max(s.stores.Pollen-consumption, 0)
+	s.cons.PollenDaily = consumption
 
 	s.stores.IdealPollen = math.Max(consumption*float64(s.storeParams.IdealPollenStoreDays), s.storeParams.MinIdealPollenStore)
 

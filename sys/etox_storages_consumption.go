@@ -316,13 +316,13 @@ func (s *EtoxStorages) ShiftHoney(w *ecs.World) {
 	combinedHoney := s.stores.EtoxHoneyEnergy[4] + s.stores.EtoxHoneyEnergy[5]
 
 	if combinedHoney > 0 {
-		s.stores.EtoxHoneyConcentration[5] = (s.stores.EtoxHoneyEnergy[5]*s.stores.EtoxHoneyEnergy[5] +
-			s.stores.EtoxHoneyEnergy[4]*s.stores.EtoxHoneyEnergy[4]) / combinedHoney
+		s.stores.EtoxHoneyConcentration[5] = (s.stores.EtoxHoneyEnergy[5]*s.stores.EtoxHoneyConcentration[5] +
+			s.stores.EtoxHoneyEnergy[4]*s.stores.EtoxHoneyConcentration[4]) / combinedHoney
 		s.stores.EtoxHoneyEnergy[5] = combinedHoney
 	}
 
 	// shift honey and concentration of all other stores by one day
-	for i := 1; i < 5; i++ {
+	for i := 4; i > 0; i-- {
 		s.stores.EtoxHoneyEnergy[i] = s.stores.EtoxHoneyEnergy[i-1]
 		s.stores.EtoxHoneyConcentration[i] = s.stores.EtoxHoneyConcentration[i-1]
 	}

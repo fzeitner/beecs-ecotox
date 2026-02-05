@@ -19,20 +19,18 @@ func DefaultEtox(p params.Params, pe params.ParamsEtox, app *app.App) *app.App {
 	app = initializeModelEtox(p, pe, app)
 
 	// Initialization
-
-	app.AddSystem(&sys.InitStore{})
-	app.AddSystem(&sys.InitCohorts{})
-	app.AddSystem(&sys.InitPopulation{})
-	app.AddSystem(&sys.InitPatchesList{})
-	app.AddSystem(&sys.InitForagingPeriod{})
-	app.AddSystem(&sys.InitEtox{}) // inits all the changes necessary for the beecs_ecotox submodels
+	app.AddSystem(&sys.InitStore{})          // unchanged to beecs
+	app.AddSystem(&sys.InitCohorts{})        // unchanged to beecs
+	app.AddSystem(&sys.InitPopulation{})     // unchanged to beecs
+	app.AddSystem(&sys.InitPatchesList{})    // unchanged to beecs
+	app.AddSystem(&sys.InitForagingPeriod{}) // unchanged to beecs
+	app.AddSystem(&sys.InitEtox{})           // inits all the changes necessary for the beecs_ecotox submodels
 
 	// Sub-models
-	app.AddSystem(&sys.CalcAff{})
-	app.AddSystem(&sys.CalcForagingPeriod{})
-	//app.AddSystem(&sys.CalcWaterForagingPeriod{}) // might as well be disabled atm because no function actually uses water data as of yet, because water foraging seems irrelevant/untested in netlogo as well
-	app.AddSystem(&sys.ReplenishPatches{}) // unchanged to beecs
-	app.AddSystem(&sys.PPPApplication{})   // introduced calculation of PPP exposure at patches analogous to BEEHAVE_ecotox
+	app.AddSystem(&sys.CalcAff{})            // unchanged to beecs
+	app.AddSystem(&sys.CalcForagingPeriod{}) // unchanged to beecs
+	app.AddSystem(&sys.ReplenishPatches{})   // unchanged to beecs
+	app.AddSystem(&sys.PPPApplication{})     // introduced calculation of PPP exposure at patches analogous to BEEHAVE_ecotox
 
 	app.AddSystem(&sys.MortalityCohorts{})     // unchanged to beecs
 	app.AddSystem(&sys.MortalityCohortsEtox{}) // introduced ETOXMortality as an additional process for all cohorts
@@ -43,7 +41,7 @@ func DefaultEtox(p params.Params, pe params.ParamsEtox, app *app.App) *app.App {
 	app.AddSystem(&sys.CountPopulation{}) // added here to reflect position in original model, necessary to capture mortality effects of cohorts on broodcare and foraging
 	app.AddSystem(&sys.BroodCare{})       // Moved after the first countingproc to resemble the original model further, as counting twice is inevitable because of ETOXmortality processes.
 
-	app.AddSystem(&sys.NewCohorts{})
+	app.AddSystem(&sys.NewCohorts{})      // unchanged to beecs
 	app.AddSystem(&sys.CountPopulation{}) // added here to reflect position in original model (miteproc), necessary to capture new Cohorts for foraging
 
 	app.AddSystem(&sys.ForagingEtox{})          // introduced the uptake of PPP into foragers and the hive through contaminated honey/pollen; would be far too tedious to decouple this from the normal foraging submodel

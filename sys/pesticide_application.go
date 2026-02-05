@@ -112,9 +112,8 @@ func (s *PPPApplication) Update(w *ecs.World) {
 				}
 			}
 		}
+		// TODO: could still implement scriped patches here; not implemented only because they were not needed yet
 	}
-
-	// TODO: could still implement scriped patches here; not implemented only because they were not needed yet
 
 	query := s.filter.Query()
 	for query.Next() {
