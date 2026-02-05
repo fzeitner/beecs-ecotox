@@ -13,6 +13,7 @@ import "embed"
 //   - foraging-period/berlin2004.txt
 //   - foraging-period/berlin2005.txt
 //   - foraging-period/berlin2006.txt
+//   - foraging-period/rothamsted2009.txt
 //
 //go:embed foraging-period
 var ForagingPeriod embed.FS

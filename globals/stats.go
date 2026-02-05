@@ -48,6 +48,7 @@ type ConsumptionStats struct {
 // Reset all stats to zero.
 func (s *ConsumptionStats) Reset() {
 	s.HoneyDaily = 0
+	s.PollenDaily = 0
 }
 
 // ForagingStats contains statistics on foraging per foraging round.

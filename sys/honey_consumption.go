@@ -41,6 +41,12 @@ func (s *HoneyConsumption) Update(w *ecs.World) {
 	needAdult := float64(s.pop.WorkersInHive+s.pop.WorkersForagers)*s.needs.WorkerResting + float64(s.pop.DronesInHive)*s.needs.Drone
 	needLarvae := float64(s.pop.WorkerLarvae)*needLarva + float64(s.pop.DroneLarvae)*s.needs.DroneLarva
 
+	// to prevent bugs in the Etox_Storage_Consumption subsystem it is necessary to stop thermoregulation when there
+	// are no living worker bees anymore. Calculating thermoregulation with no living workers is redundant anyways.
+	if s.pop.WorkersInHive+s.pop.WorkersForagers == 0 {
+		thermoRegBrood = 0 // no living adults means no thermoregulation is possible
+	}
+
 	consumption := needAdult + needLarvae + float64(s.pop.TotalBrood)*thermoRegBrood
 	consumptionEnergy := 0.001 * consumption * s.energyParams.Honey
 

@@ -3,14 +3,14 @@ import pandas as pd
 
 
 def agg_netlogo(file, out_file):
-    data = pd.read_csv(file, delimiter=";")
+    data = pd.read_csv(file, delimiter=",", header=6)
 
-    runs = pd.unique(data.run)
+    runs = pd.unique(data.RAND_SEED)
     runs.sort()
     ticks = pd.unique(data.ticks)
     ticks.sort()
 
-    columns = list(data.columns)[2:]
+    columns = list(data.columns)[4:]
 
     out = pd.DataFrame(data={"ticks": ticks}, index=ticks)
 
@@ -35,4 +35,4 @@ def agg_netlogo(file, out_file):
 
 
 if __name__ == "__main__":
-    agg_netlogo("out/netlogo.csv", "_tests/default/netlogo.csv")
+    agg_netlogo("_tests/defaultEtox/out/netlogo.csv", "_tests/defaultEtox/netlogo.csv")

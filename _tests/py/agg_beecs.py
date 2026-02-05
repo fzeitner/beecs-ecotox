@@ -48,9 +48,10 @@ def agg_beecs(file_pattern, out_file):
             values = data[column][data.ticks == tick]
             q = np.quantile(values, [0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95])
             out.loc[tick, cols] = q
+        out = out.copy()      # to keep df from becoming highly fragmented/stop the pd warning
 
     out.to_csv(out_file, sep=";", index=False)
 
 
 if __name__ == "__main__":
-    agg_beecs("_tests/default/out/beecs-%04d.csv", "_tests/default/beecs.csv")
+    agg_beecs("_tests/defaultEtox/out/beecs-%04d.csv", "_tests/defaultEtox/beecs.csv")

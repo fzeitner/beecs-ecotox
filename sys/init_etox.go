@@ -31,6 +31,10 @@ func (s *InitEtox) Initialize(w *ecs.World) {
 	droneDev := ecs.GetResource[params.DroneDevelopment](w)
 	s.etox = ecs.GetResource[params.PPPApplication](w)
 
+	if s.etox.FixedNectarPollenRatio {
+		s.etox.PPPconcentrationPollen = s.etox.PPPconcentrationNectar * s.etox.EtoxNecPolFactor
+	}
+
 	s.larvaeEtox = globals.LarvaeEtox{
 		WorkerCohortDose: make([]float64, workerDev.LarvaeTime),
 		DroneCohortDose:  make([]float64, droneDev.LarvaeTime),

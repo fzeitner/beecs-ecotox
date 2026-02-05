@@ -55,6 +55,8 @@ func TestPollenConsumption(t *testing.T) {
 
 	stats := globals.PopulationStats{}
 	ecs.AddResource(world, &stats)
+	consStats := globals.ConsumptionStats{}
+	ecs.AddResource(world, &consStats)
 
 	fac := globals.NewForagerFactory(world)
 
