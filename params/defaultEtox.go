@@ -39,8 +39,8 @@ func DefaultEtox() DefaultParamsEtox {
 
 			RealisticStoch:     false, // Determines whether stochstic death for low numbers of IHbees in one cohort shall be made more realistic by calculating a chance for each bee.
 			ReworkedThermoETOX: false, // Determines whether thermoregulation energy shall be taken in equally by all adult bees (True, new version) or if one cohort/squad shall take it all (false; Netlogo version).
-			Nursebeefix:        true,  // Determines whether the nurse bee intake from BEEHAVE_ecotox's nursebeefactors shall be added to IHbees instead of dissipating.
-			HSUfix:             true,  // Determines if the PPP lost to the second call of HSuptake when unloading nectar shall be redirected to IHbees (true) insted of dissipating.
+			Nursebeefix:        true,  // Added by F. Zeitner, not implemented in NetLogo. Determines whether the nurse bee intake from BEEHAVE_ecotox's nursebeefactors shall be added to IHbees instead of dissipating.
+			HSUfix:             true,  // Added by F. Zeitner, not implemented in NetLogo. Determines if the PPP lost to the second call of HSuptake when unloading nectar shall be redirected to IHbees (true) instead of dissipating.
 
 			PPPname:                "No applications", // Identifier for the PPP used.
 			PPPconcentrationNectar: 990,               // PPP concentration in nectar [mug/kg].

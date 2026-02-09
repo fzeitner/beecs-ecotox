@@ -142,7 +142,7 @@ func (s *EtoxStorages) Update(w *ecs.World) {
 	s.etoxStats.CumDoseIHBees, c, h, p, num = s.CalcDosePerCohort(w, s.inHive.Workers, s.inHiveEtox.WorkerCohortDose, s.stores.EtoxEnergyThermo, workerbaselineneed, s.needsPollen.Worker, float64(1), float64(1))
 	s.stores.EtoxEnergyThermo = 0.
 	currentIHbees := num
-	if s.pop.WorkersInHive > 0 {
+	if s.pop.WorkersInHive > 0 && s.etoxStats.CumDoseIHBees > 0. {
 		s.etoxStats.MeanDoseIHBees = s.etoxStats.CumDoseIHBees / float64(currentIHbees)
 	} else {
 		s.etoxStats.MeanDoseIHBees = 0.

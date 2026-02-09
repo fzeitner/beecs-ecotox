@@ -38,17 +38,17 @@ func DefaultEtox(p params.Params, pe params.ParamsEtox, app *app.App) *app.App {
 	app.AddSystem(&sys.EggLaying{})            // unchanged to beecs
 	app.AddSystem(&sys.TransitionForagers{})   // unchanged to beecs
 
-	app.AddSystem(&sys.CountPopulation{}) // added here to reflect position in original model, necessary to capture mortality effects of cohorts on broodcare and foraging
-	app.AddSystem(&sys.BroodCare{})       // Moved after the first countingproc to resemble the original model further, as counting twice is inevitable because of ETOXmortality processes.
+	app.AddSystem(&sys.CountPopulation{}) // unchanged to beecs
+	app.AddSystem(&sys.BroodCare{})       // unchanged to beecs
 
 	app.AddSystem(&sys.NewCohorts{})      // unchanged to beecs
-	app.AddSystem(&sys.CountPopulation{}) // added here to reflect position in original model (miteproc), necessary to capture new Cohorts for foraging
+	app.AddSystem(&sys.CountPopulation{}) // unchanged to beecs
 
 	app.AddSystem(&sys.ForagingEtox{})          // introduced the uptake of PPP into foragers and the hive through contaminated honey/pollen; would be far too tedious to decouple this from the normal foraging submodel
 	app.AddSystem(&sys.MortalityForagers{})     // unchanged to beecs
 	app.AddSystem(&sys.MortalityForagersEtox{}) // introduced ETOXMortality as an additional process for foragers after normal foraging mortality, analogous to BEEHAVE_ecotox
 
-	app.AddSystem(&sys.CountPopulation{})   // necessary here because of food comsumption in the next steps
+	app.AddSystem(&sys.CountPopulation{})   // unchanged to beecs
 	app.AddSystem(&sys.PollenConsumption{}) // unchanged to beecs
 	app.AddSystem(&sys.HoneyConsumption{})  // unchanged to beecs
 	app.AddSystem(&sys.EtoxStorages{})      // regulates in-hive exposure and fate of PPP and the newly introduced honey compartiments
@@ -80,20 +80,20 @@ func initializeModelEtox(p params.Params, pe params.ParamsEtox, a *app.App) *app
 		a.Reset()
 	}
 
-	p.Apply(&a.World)
-	pe.Apply(&a.World)
+	p.Apply(a.World)
+	pe.Apply(a.World)
 
-	factory := globals.NewForagerFactory(&a.World)
-	ecs.AddResource(&a.World, &factory)
+	factory := globals.NewForagerFactory(a.World)
+	ecs.AddResource(a.World, &factory)
 
 	stats := globals.PopulationStats{}
-	ecs.AddResource(&a.World, &stats)
+	ecs.AddResource(a.World, &stats)
 
 	consumptionStats := globals.ConsumptionStats{}
-	ecs.AddResource(&a.World, &consumptionStats)
+	ecs.AddResource(a.World, &consumptionStats)
 
 	foragingStats := globals.ForagingStats{}
-	ecs.AddResource(&a.World, &foragingStats)
+	ecs.AddResource(a.World, &foragingStats)
 
 	return a
 }

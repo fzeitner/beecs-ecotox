@@ -1,8 +1,9 @@
 # Validation
 
-Validation of the beecs implementation against the original [BEEHAVE](https://beehave-model.net) model.
+Validation of the beecs implementation against the original [BEEHAVE](https://beehave-model.net) (above) and [BEEHAVE_ecotox](https://onlinelibrary.wiley.com/doi/full/10.1002/etc.5467) (below) models.
 
-The plots below show simulation results for one year. Lines are medians of 100 simulations, areas are 5% and 95% quantiles.
+The plots below show simulation results for one year. Lines are medians of 100 simulations, areas are 5% and 95% quantiles. 
+Plots against BEEHAVE_ecotox can be found in the defaultEtox folder, they might also still be added here soon.
 
 ## Colony structure
 
@@ -16,3 +17,21 @@ The plots below show simulation results for one year. Lines are medians of 100 s
 
 ![HoneyEnergyStore](https://github.com/user-attachments/assets/0300e386-1a15-4609-b95c-94bc3cd7a2c5)
 ![PollenStore_g](https://github.com/user-attachments/assets/c486904f-d7b0-4359-b90c-77f044b62317)
+
+# Validation against BEEHAVE_ecotox
+
+The NetLogo model version that was used to create the simulation data can be found in the [defaultEtox](https://github.com/fzeitner/beecs-ecotox/tree/main/_tests/defaultEtox) folder.
+
+## Colony structure
+
+![TotalEggs](_tests/defaultEtox/TotalEggs.png)
+![TotalLarvae](_tests/defaultEtox/TotalLarvae.png)
+![TotalPupae](_tests/defaultEtox/TotalPupae.png)
+![TotalIHBees](_tests/defaultEtox/TotalIHBees.png)
+![TotalForagers](_tests/defaultEtox/TotalForagers.png)
+
+## Mean oral doses 
+
+![DoseLarvae](defaultEtox/ETOX_Mean_Dose_Larvae.png)
+![DoseIHbees](defaultEtox/ETOX_Mean_Dose_IHBee.png)
+![DoseForagers](defaultEtox/ETOX_Mean_Dose_Forager.png)

@@ -63,8 +63,8 @@ type ForagingEtox struct {
 	foragerLoadPPPMapper  *ecs.Map6[comp.Activity, comp.KnownPatch, comp.Milage, comp.NectarLoad, comp.EtoxLoad, comp.PPPExpo]
 	pppExpoAdder          *ecs.Map2[comp.PPPExpo, comp.EtoxLoad]
 
-	activityFilter       *ecs.Filter1[comp.Activity]
-	ageFilter            *ecs.Filter1[comp.Age]
+	activityFilter *ecs.Filter1[comp.Activity]
+	//ageFilter            *ecs.Filter1[comp.Age]
 	loadFilter           *ecs.Filter3[comp.Activity, comp.NectarLoad, comp.EtoxLoad]
 	loadexpoFilter       *ecs.Filter4[comp.Activity, comp.NectarLoad, comp.EtoxLoad, comp.PPPExpo]
 	foragerFilter        *ecs.Filter3[comp.Activity, comp.KnownPatch, comp.Milage]
@@ -99,7 +99,7 @@ func (s *ForagingEtox) Initialize(w *ecs.World) {
 	s.factory = ecs.GetResource[globals.ForagerFactory](w)
 
 	s.activityFilter = s.activityFilter.New(w)
-	s.ageFilter = s.ageFilter.New(w)
+	//s.ageFilter = s.ageFilter.New(w)
 	s.loadFilter = s.loadFilter.New(w)
 	s.loadexpoFilter = s.loadexpoFilter.New(w)
 	s.foragerFilter = s.foragerFilter.New(w)
@@ -182,7 +182,7 @@ func (s *ForagingEtox) newForagers(w *ecs.World) {
 	}
 	s.newCohorts.Foragers = 0
 
-	agequery := s.ageFilter.Without(ecs.C[comp.EtoxLoad]()).Query()
+	agequery := ecs.NewFilter1[comp.Age](w).Without(ecs.C[comp.EtoxLoad]()).Query()
 	for agequery.Next() {
 		s.toAdd = append(s.toAdd, agequery.Entity())
 	}

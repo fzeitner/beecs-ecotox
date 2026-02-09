@@ -10,7 +10,7 @@ def agg_netlogo(file, out_file):
     ticks = pd.unique(data.ticks)
     ticks.sort()
 
-    columns = list(data.columns)[4:]
+    columns = list(data.columns)[7:]
 
     out = pd.DataFrame(data={"ticks": ticks}, index=ticks)
 
@@ -25,14 +25,15 @@ def agg_netlogo(file, out_file):
             column + "_Q95",
         ]
         for col in cols:
-            out[col] = 0
+            out[col] = 0.
         for tick in ticks:
             values = data[column][data.ticks == tick]
             q = np.quantile(values, [0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95])
             out.loc[tick, cols] = q
+        out = out.copy()      # to keep df from becoming highly fragmented/stop the pd warning
 
     out.to_csv(out_file, sep=";", index=False)
 
 
 if __name__ == "__main__":
-    agg_netlogo("_tests/defaultEtox/out/netlogo.csv", "_tests/defaultEtox/netlogo.csv")
+    agg_netlogo("_tests/defaultEtox/out/netlogo.csv", "_tests/defaultEtox/beehave.csv")
