@@ -1,8 +1,9 @@
 # Validation
 
-Validation of the beecs implementation against the original [BEEHAVE](https://beehave-model.net) model.
+Validation of the beecs implementation against the original [BEEHAVE](https://beehave-model.net) and [BEEHAVE_ecotox](https://onlinelibrary.wiley.com/doi/full/10.1002/etc.5467) models.
 
-The plots below show simulation results for one year. Lines are medians of 100 simulations, areas are 5% and 95% quantiles.
+The plots below show simulation results for one year. Lines are medians of 100 simulations, areas are 5% and 95% quantiles. 
+Plots against BEEHAVE_ecotox can be found in the defaultEtox folder, they might also still be added here soon.
 
 ## Colony structure
 

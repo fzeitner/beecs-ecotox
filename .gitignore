@@ -4,3 +4,5 @@
 *.png
 *.svg
 /out/
+!_tests/defaultEtox/*.png
+!_tests/defaultEtox/*.csv

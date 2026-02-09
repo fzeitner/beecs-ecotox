@@ -23,7 +23,7 @@ func main() {
 	}
 
 	pe := params.DefaultEtox()
-	pe.PPPApplication.Application = true
+	pe.PPPApplication.Application = true            // turn on application to enable comparison
 	pe.PPPApplication.FixedNectarPollenRatio = true // BEEHAVE_ecotox default is true
 	pe.PPPApplication.Nursebeefix = false           // unfixed in NetLogo
 	pe.PPPApplication.HSUfix = false                // unfixed in NetLogo
