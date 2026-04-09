@@ -24,11 +24,11 @@ The NetLogo model version that was used to create the simulation data can be fou
 
 ## Colony structure
 
-![TotalEggs](_tests/defaultEtox/TotalEggs.png)
-![TotalLarvae](_tests/defaultEtox/TotalLarvae.png)
-![TotalPupae](_tests/defaultEtox/TotalPupae.png)
-![TotalIHBees](_tests/defaultEtox/TotalIHBees.png)
-![TotalForagers](_tests/defaultEtox/TotalForagers.png)
+![TotalEggs](defaultEtox/TotalEggs.png)
+![TotalLarvae](defaultEtox/TotalLarvae.png)
+![TotalPupae](defaultEtox/TotalPupae.png)
+![TotalIHBees](defaultEtox/TotalIHBees.png)
+![TotalForagers](defaultEtox/TotalForagers.png)
 
 ## Mean oral doses 
 
