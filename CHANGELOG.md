@@ -1,17 +1,17 @@
-## [[unpublished]](https://github.com/mlange-42/beecs/compare/v0.5.0...main)
+## [[v0.6.0]](https://github.com/mlange-42/beecs/compare/v0.5.0...v0.6.0)
 
 ### Breaking changes
 
 - Renames misspelled parameter `EnergyContent.Scurose` to `Sucrose` (#85)
-- Upgrades to Ark v0.8.0 (ECS world is pointer instead of value) (#94)
+- Upgrades to Ark v0.8.3 (ECS world is pointer instead of value) (#94)
 
 ### Other
 
 - Migrates from Arche to Ark as ECS package (#86)
 - Migrates to the new `math/rand/v2` package (#86)
 - Introduces shuffling of foragers to imitate BEEHAVE more closely (#88 by [fzeitner](https://github.com/fzeitner))
-- Re-ordering of systems to to imitate BEEHAVE more closely (#90 by [fzeitner](https://github.com/fzeitner))
-- Further tweaks to to imitate BEEHAVE more closely (#90 by [fzeitner](https://github.com/fzeitner))
+- Re-ordering of systems to imitate BEEHAVE more closely (#90 by [fzeitner](https://github.com/fzeitner))
+- Further tweaks to imitate BEEHAVE more closely (#90 by [fzeitner](https://github.com/fzeitner))
 
 ## [[v0.5.0]](https://github.com/mlange-42/beecs/compare/v0.4.1...v0.5.0)
 
